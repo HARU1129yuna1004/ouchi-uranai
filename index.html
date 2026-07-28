@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>おうち占い | 待たない。おうちで受けとる、一冊の鑑定書。</title>
+<meta name="description" content="予約も、待ち時間もありません。スマホで質問に答えるだけ。あなたのための鑑定書が一冊、おうちに届きます。">
+<style>
+  :root{
+    --cream:#FCF8F2;
+    --cream-deep:#F6EEE2;
+    --ink:#2E2A3F;
+    --ink-soft:#5B5470;
+    --plum:#7B4B6E;
+    --plum-light:#A86E95;
+    --gold:#C8A24A;
+    --gold-soft:#E8D6A8;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  a{color:inherit;}
+
+  /* ヒーロー */
+  .hero{
+    background:linear-gradient(160deg,#FDF6EC 0%,#F5E6E9 55%,#EFE2EC 100%);
+    padding:76px 0 68px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:-1px;height:40px;
+    background:var(--cream);
+    border-radius:50% 50% 0 0 / 100% 100% 0 0;
+  }
+  .hero-mark{
+    font-size:13px;letter-spacing:.32em;color:var(--plum);
+    margin-bottom:20px;font-weight:600;
+  }
+  .hero h1{
+    font-size:40px;line-height:1.5;margin:0 0 8px;font-weight:700;
+    letter-spacing:.02em;
+  }
+  .hero h1 small{display:block;font-size:16px;color:var(--plum);font-weight:600;letter-spacing:.2em;margin-bottom:14px;}
+  .hero p{
+    font-size:17px;color:var(--ink-soft);margin:22px auto 0;max-width:600px;
+  }
+  .hero-rule{
+    width:52px;height:2px;background:var(--gold);margin:30px auto 0;border-radius:2px;
+  }
+
+  /* セクション共通 */
+  section{padding:64px 0;}
+  .sec-title{
+    text-align:center;font-size:15px;letter-spacing:.22em;color:var(--plum);
+    font-weight:700;margin:0 0 10px;
+  }
+  .sec-lead{
+    text-align:center;font-size:27px;font-weight:700;margin:0 0 42px;line-height:1.6;
+  }
+
+  /* 3つの安心 */
+  .points{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .point{
+    background:var(--white);border-radius:18px;padding:32px 24px;text-align:center;
+    box-shadow:0 4px 20px rgba(123,75,110,.07);
+  }
+  .point-num{
+    display:inline-block;width:38px;height:38px;line-height:38px;border-radius:50%;
+    background:var(--gold-soft);color:var(--plum);font-weight:700;margin-bottom:16px;
+  }
+  .point h3{font-size:19px;margin:0 0 10px;}
+  .point p{font-size:15px;color:var(--ink-soft);margin:0;}
+
+  /* お店 */
+  .shops{background:var(--cream-deep);}
+  .shop{
+    background:var(--white);border-radius:20px;padding:36px;margin-bottom:22px;
+    box-shadow:0 4px 22px rgba(123,75,110,.08);
+    display:flex;gap:30px;align-items:center;
+  }
+  .shop-icon{
+    flex:0 0 92px;height:92px;border-radius:50%;
+    background:linear-gradient(140deg,#F5E6E9,#EFE2EC);
+    display:flex;align-items:center;justify-content:center;font-size:38px;
+  }
+  .shop-body{flex:1;min-width:0;}
+  .shop-author{font-size:13px;color:var(--plum);font-weight:700;letter-spacing:.1em;margin-bottom:6px;}
+  .shop h3{font-size:23px;margin:0 0 10px;line-height:1.5;}
+  .shop p{font-size:15px;color:var(--ink-soft);margin:0 0 18px;}
+  .shop-meta{font-size:13px;color:var(--plum-light);margin:0 0 18px;}
+  .btn{
+    display:inline-block;background:var(--plum);color:var(--white);
+    padding:13px 34px;border-radius:999px;text-decoration:none;font-weight:700;
+    font-size:15px;transition:.2s;
+  }
+  .btn:hover{background:var(--plum-light);}
+  .btn-gold{background:var(--gold);}
+  .btn-gold:hover{background:#D9B45E;}
+
+  /* 流れ */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .step{text-align:center;padding:26px 18px;}
+  .step-num{
+    font-size:13px;letter-spacing:.2em;color:var(--gold);font-weight:700;margin-bottom:12px;
+  }
+  .step h3{font-size:18px;margin:0 0 8px;}
+  .step p{font-size:14.5px;color:var(--ink-soft);margin:0;}
+
+  /* 出店 */
+  .tenant{
+    background:linear-gradient(150deg,#3A3050 0%,#4E3B5E 100%);
+    color:var(--white);text-align:center;
+  }
+  .tenant .sec-title{color:var(--gold-soft);}
+  .tenant .sec-lead{color:var(--white);}
+  .tenant-text{
+    max-width:640px;margin:0 auto 32px;font-size:16px;color:#E4DCEC;
+  }
+  .tenant-list{
+    list-style:none;padding:0;margin:0 auto 34px;max-width:560px;text-align:left;
+  }
+  .tenant-list li{
+    padding:12px 0 12px 30px;position:relative;font-size:15.5px;color:#EDE7F2;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .tenant-list li::before{
+    content:"◆";position:absolute;left:4px;color:var(--gold);font-size:12px;
+  }
+
+  /* フッター */
+  footer{background:var(--cream-deep);padding:40px 0;text-align:center;font-size:13.5px;color:var(--ink-soft);}
+  footer a{color:var(--plum);}
+
+  @media(max-width:760px){
+    .hero{padding:56px 0 50px;}
+    .hero h1{font-size:29px;}
+    .sec-lead{font-size:22px;}
+    .points,.steps{grid-template-columns:1fr;}
+    .shop{flex-direction:column;text-align:center;padding:30px 22px;}
+    .shop-icon{flex:0 0 auto;}
+    .tenant-list{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="hero-mark">O U C H I &nbsp; U R A N A I</p>
+    <h1><small>おうち占い</small>待たない占いが、<br>おうちに届く。</h1>
+    <p>予約も、電話も、待ち時間もありません。<br>スマホで質問に答えるだけ。あなたのためだけの鑑定書が、一冊できあがります。</p>
+    <div class="hero-rule"></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="sec-title">はじめての方へ</p>
+    <h2 class="sec-lead">こういう方に、届いています。</h2>
+    <div class="points">
+      <div class="point">
+        <span class="point-num">1</span>
+        <h3>順番を待たなくていい</h3>
+        <p>人気の先生を何ヶ月も待つ必要はありません。夜中でも、家事の合間でも、思い立ったときに。</p>
+      </div>
+      <div class="point">
+        <span class="point-num">2</span>
+        <h3>顔を合わせなくていい</h3>
+        <p>面と向かって話すのが苦手でも大丈夫。誰にも会わずに、そっと受けとれます。</p>
+      </div>
+      <div class="point">
+        <span class="point-num">3</span>
+        <h3>一冊、手元に残る</h3>
+        <p>その場で終わってしまう話ではなく、何度でも読み返せる一冊の本になって届きます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shops">
+  <div class="wrap">
+    <p class="sec-title">開いているお店</p>
+    <h2 class="sec-lead">まず、一軒目から。</h2>
+
+    <div class="shop">
+      <div class="shop-icon">✦</div>
+      <div class="shop-body">
+        <p class="shop-author">後藤 光輝</p>
+        <h3>Stella Code — あなたの本質に光をあてる、一冊の物語</h3>
+        <p>生まれ持ったエネルギーの形、才能、いま止まっている理由。それを二十ページの鑑定書にしてお渡しします。これまで三百人近い方が申し込まれました。</p>
+        <p class="shop-meta">お届けまで／お申し込みから数日以内</p>
+        <a class="btn" href="https://stella-code-kpee.onrender.com/q">このお店に入る</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="sec-title">受けとるまで</p>
+    <h2 class="sec-lead">やることは、三つだけ。</h2>
+    <div class="steps">
+      <div class="step">
+        <p class="step-num">S T E P&nbsp;1</p>
+        <h3>お店をえらぶ</h3>
+        <p>気になった方でかまいません。ぴんと来た方が、たいてい合っています。</p>
+      </div>
+      <div class="step">
+        <p class="step-num">S T E P&nbsp;2</p>
+        <h3>質問に答える</h3>
+        <p>五分から十分ほど。むずかしいことは聞きません。思ったままで大丈夫です。</p>
+      </div>
+      <div class="step">
+        <p class="step-num">S T E P&nbsp;3</p>
+        <h3>鑑定書を受けとる</h3>
+        <p>できあがったら、そのままスマホに届きます。印刷して手元に置く方も多いです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tenant">
+  <div class="wrap">
+    <p class="sec-title">お店を出したい先生へ</p>
+    <h2 class="sec-lead">鑑定を書く時間、<br>もう手放しませんか。</h2>
+    <p class="tenant-text">
+      一人ぶん書くのに三十分から四十五分。ほんとうは、もっと多くの方に届けたいのに、そこで手が止まる。
+      わたし自身がそうでした。だからこの仕組みを作りました。
+    </p>
+    <ul class="tenant-list">
+      <li>あなたの考え方・あなたの言葉のまま、鑑定書ができあがります</li>
+      <li>お名前も、表紙の色も、あなたのもの。仕組みは表に出ません</li>
+      <li>ホームページもアプリも作らなくて大丈夫。この中に一区画お渡しします</li>
+      <li>最後はあなたが目を通してからお届けします。任せきりにはなりません</li>
+    </ul>
+    <a class="btn btn-gold" href="#">出店について聞いてみる</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>おうち占い ｜ 運営 後藤 光輝</p>
+    <p><a href="#">お問い合わせ</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
